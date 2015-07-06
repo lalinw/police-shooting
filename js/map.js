@@ -21,10 +21,11 @@ var getData = function(theMap) {
     async: false,
   	success: function(dem) {
       data = dem;
+      customBuild(theMap, data);
     },
   	dataType:'json'
   });
-  customBuild(theMap, data);  
+    
 }
 
 
