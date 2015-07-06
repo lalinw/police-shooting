@@ -21,31 +21,32 @@ h1, h2, h3, h4 {
 	color: #FFFFFF;
 }
 
-h5 {
+h5, p {
 	color: #858585;
 }
 
-p {
-	color: #FF9933;
-}
 #container {
 	margin: auto;
 }
 
 a:link {
-    color: #00FF00;
+    color: #66FF33;
     text-decoration: none;
 }
 
 a:visited {
-    color: #00FF00;
+    color: #66FF33;
     text-decoration: none;
 }
 
 a:hover {
-    color: #00FF00;
+    color: #CCFF66;
+}
+s
+input:focus {
+    color: #66FF33;
 }
 
-input:focus {
-    color: #00FF00;
+.hidden {
+	display: none;
 }

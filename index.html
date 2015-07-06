@@ -14,24 +14,28 @@
   <body>
     <main>
       <header>
-        <h1>Mapping of Police Shootings in USA</h1>
-        <h3>This is a mapping of the police shootings recorded all over USA in 2014.</h3>
-        <p>Select layers on the upper right corner to view specific data sets.</p>
+        <h1>Mapping of Police Shootings across USA</h1>
+        <h4>Below is a mapping of the police shootings recorded across USA.</h4>
+        <p>
+          Click for incident details and select layers to view <font color="white">gender specific</font> data<br/>
+          A <font color="blue">blue</font> marker represents a hit, and a<font color="red">red</font> marker a kill.
+        </p>
         
       </header>
-      
-      <div>
-      </div>
 
-      <div id="container" style="width:750px; height:500px;"></div>
+      <div id="container" class="hidden" style="width:750px; height:500px;"></div>
       <script>
        	// This is where you should execute your drawMap function // 
         drawMap();
       </script>
+
       <footer>
-        <h5><i>Content is not intended to be disrespectful. Viewer discretion is advised.</i></h5>
-        <h5>(source: <a href="http://regressing.deadspin.com/deadspin-police-shooting-database-update-were-still-go-1627414202">crowdsourced police shootings data from Deadspin)</a></h5>
+        <h5>
+          <i>Content is not intended to be disrespectful. Viewer discretion is advised.</i><br/>
+          source: <a href="http://regressing.deadspin.com/deadspin-police-shooting-database-update-were-still-go-1627414202">crowdsourced police shootings data from Deadspin</a>
+        </h5>
       </footer>
+
     </main>
 </body>
 </html>

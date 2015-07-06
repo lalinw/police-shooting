@@ -6,6 +6,7 @@ var drawMap = function() {
   // Execute your function to get data
   var theMap = L.map('container').setView([38.5, -98.0], 4);
   L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png').addTo(theMap);
+  $('#container').fadeIn(6000).removeClass('hidden');
   getData(theMap);
 }
 
@@ -29,26 +30,44 @@ var getData = function(theMap) {
 
 // Do something creative with the data here!  
 var customBuild = function(theMap, data) {
-	data.map(function(dis) {
-    
-    var clr;
+  var femaleVic = L.layerGroup().addTo(theMap);
+  var maleVic = L.layerGroup().addTo(theMap);
+  var unknownGen = L.layerGroup().addTo(theMap);
+	
+  var overlayMaps = {
+    "Female Victims": femaleVic,
+    "Male Victims": maleVic,
+    "Unspecified Victims": unknownGen
+  };
+
+  L.control.layers(null, overlayMaps).addTo(theMap);
+
+  data.map(function(dis) {
+    var clr = 'blue';
     if (dis['Hit or Killed?'] == 'Hit') {
       clr = 'blue';
     } else { //Killed is red
       clr = 'red';
     }
 
+    var text = "<b>Location:</b> " + dis.City + ", " + dis.State.substring(0,2) + "<br/>" +
+      "<b>Date:</b> " + dis.Timestamp + "<br/>" +
+      "<b>Victim:</b> " + dis.Race + " " + dis["Victim's Gender"] + ", " + dis["Victim's Age"] + " yrs";
     var cirMa = L.circleMarker(
       [dis.lat, dis.lng],
       {radius: 10, 
       color: clr, 
       opacity: 0.7, 
       stroke: false
-    }).addTo(theMap);
-    var text = "<b>Location:</b> " + dis.City + ", " + dis.State.substring(0,2) + "<br/>" +
-      "<b>Date:</b> " + dis.Timestamp + "<br/>" +
-      "<b>Victim:</b> " + dis.Race + " " + dis["Victim's Gender"] + ", " + dis["Victim's Age"] + " yrs";
-    cirMa.bindPopup(text);
+    }).bindPopup(text);
+    
+    if (dis["Victim's Gender"] == 'Female') {
+      femaleVic.addLayer(cirMa);
+    } else if (dis["Victim's Gender"] == 'Male') {
+      maleVic.addLayer(cirMa);
+    } else {
+      unknownGen.addLayer(cirMa);
+    }
   });
 
 }
