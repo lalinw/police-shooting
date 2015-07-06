@@ -25,12 +25,10 @@ var getData = function() {
   	type:'get',
   	success: function(d) {
   		data = d;
-  		alert('got data');
-  		customBuild(data);	
-  		alert('reached here');
   	},
   	dataType:'json'
   });
+  customBuild(data);  
 }
 
 // Do something creative with the data here!  
