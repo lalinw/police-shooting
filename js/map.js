@@ -4,46 +4,39 @@ var drawMap = function() {
   // Create an tile layer variable using the appropriate url
   // Add the layer to your map
   // Execute your function to get data
-
-  var map = L.map('container');
-  map.setView([47.61, -122.33], 7);
-
-  L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png').addTo(map);
-  alert('before getData');
-  getData();
+  var theMap = L.map('container').setView([38.5, -98.0], 4);
+  L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png').addTo(theMap);
+  getData(theMap);
 }
 
 // Function for getting data
-var getData = function() {
+var getData = function(theMap) {
 
   // Execute an AJAX request to get the data in data/response.js
   // When your request is successful, call your customBuild function
   var data;
-  alert('declared data');
   $.ajax({
   	url:'data/response.json',
   	type:'get',
-  	success: function(d) {
-  		data = d;
-  	},
+    async: false,
+  	success: function(dem) {data = dem;},
   	dataType:'json'
   });
-  customBuild(data);  
+  customBuild(theMap, data);  
 }
 
-// Do something creative with the data here!  
-var customBuild = function(data) {
-	alert('reached customBuild');
-	data.map(function(d) {
-		alert('creating a circle');
-    var lat = d.lat;
-    var lng = d.lng;
-		var circle = L.circle([lat, lng], 200, {color: 'red', opacity: 0.5});
-    circle.addTo(map);
-		alert('add circle 2');
 
-	});
-	alert('added ticker');
+// Do something creative with the data here!  
+var customBuild = function(theMap, data) {
+		data.map(function(dis) {
+    var cirMa = L.circleMarker([dis.lat, dis.lng],
+      {radius: 5, 
+      color: 'red', 
+      opacity: 0.7, 
+      stroke: false
+    }).addTo(theMap);
+  });
+
 }
 
 

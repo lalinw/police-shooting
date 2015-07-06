@@ -2,33 +2,35 @@
 
 <html>
   <head>
-    <script src="http://code.jquery.com/jquery-2.1.1.min.js"></script>
+    <script type="text/javascript" src="http://code.jquery.com/jquery-2.1.1.min.js"></script>
     <script type="text/javascript" src="js/map.js"></script>
     <title>Police Shootings</title>
     <!-- Get the leaflet.js library and stylesheet -->
-    <script src="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.js"></script>
-    <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.css" />
-    <link rel="stylesheet" href="css/main.css"/>
+    <script type="text/javascript" src="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.js"></script>
+    <link rel="stylesheet" type="text/css" href="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.css" />
+    <link rel="stylesheet" type="text/css" href="css/main.css"/>
   </head>
 
   <body>
-    
-    <header>
-      <h2>Mapping of Police Shootings</h2>
-      <p>This is a mapping of the police shootings record nearby the Seattle area.</p>
+    <main>
+      <header>
+        <h1>Mapping of Police Shootings in USA</h1>
+        <h3>This is a mapping of the police shootings recorded all over USA in 2014.</h3>
+        <p>Select layers on the upper right corner to view specific data sets.</p>
+        
+      </header>
       
-    </header>
-    
-    <div>
-    </div>
+      <div>
+      </div>
 
-    <div id="container" style="width:750px; height:500px;"></div>
-    <script>
-     	// This is where you should execute your drawMap function // 
-      drawMap();
-    </script>
-    <footer>
-      <p>The content is not intended to be disrespectful in anyway. Viewer discretion is advised.</p>
-    </footer>
+      <div id="container" style="width:750px; height:500px;"></div>
+      <script>
+       	// This is where you should execute your drawMap function // 
+        drawMap();
+      </script>
+      <footer>
+        <h5><i>The content is not intended to be disrespectful. Viewer discretion is advised.</i></h5>
+      </footer>
+    </main>
 </body>
 </html>
