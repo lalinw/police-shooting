@@ -35,8 +35,10 @@ var getData = function() {
 var customBuild = function(data) {
 	alert('reached customBuild');
 	data.map(function(d) {
-		alert('add circle');
-		var circle = L.circle([d.lat, d.lng], 200, {color: 'red', opacity: 0.5});
+		alert('creating a circle');
+    var lat = d.lat;
+    var lng = d.lng;
+		var circle = L.circle([lat, lng], 200, {color: 'red', opacity: 0.5});
     circle.addTo(map);
 		alert('add circle 2');
 
