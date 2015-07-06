@@ -1,21 +1,15 @@
  // Function to draw your map
-var drawMap() = function() {
-
+var drawMap = function() {
   // Create map and set viewd
-	 
-
   // Create an tile layer variable using the appropriate url
-
   // Add the layer to your map
- 
-
   // Execute your function to get data
 
-  var map = L.map('map-container');
-  map.SetView([lat, longi], 12);
+  var map = L.map('container');
+  map.setView([47.61, -122.33], 12);
 
-  L.tileLayer('http://{s}.url/{z}/{x}/{y}.png').addTo(map);
-
+  L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png').addTo(map);
+  alert('before getData');
   getData();
 }
 
@@ -23,31 +17,81 @@ var drawMap() = function() {
 var getData = function() {
 
   // Execute an AJAX request to get the data in data/response.js
-
-
   // When your request is successful, call your customBuild function
   var data;
+  alert('declared data');
   $.ajax({
-  	url:'https://data.seattle.gov/resource/7ais-f98f.json',
-  	type: 'get',
+  	url:'data/response.json',
+  	type:'get',
   	success:function(d) {
   		data = d;
-
-  		customBuild();
+  		alert('got data');
+  		customBuild(data);	
+  		alert('reached here');
   	},
-  	dataType: 'json'
+  	dataType:'json'
   });
 }
 
 // Do something creative with the data here!  
-var customBuild = function() {
-	data.map(function(d) {
-		var circle = new L.circle([d.latitude, d.longitude], 200, {
-			color:'red',
-			opacity: 0.5
-		}).addTo(map);
-	});
+var customBuild = function(data) {
+	alert('reached customBuild');
+	data.map(function(dp) {
+		alert('add circle');
+		var circle = L.circle([47.65, -122.33], 200).addTo(map);
+		alert('add circle 2');
 
+	});
+	alert('added ticker');
 }
 
 
+
+
+
+ // Function to draw your map
+function drawMap() {
+
+  // Create map and set viewd
+  // Create an tile layer variable using the appropriate url
+  // Add the layer to your map
+  // Execute your function to get data
+
+  var map = L.map('container');
+  map.setView([47.61, -122.33], 12);
+
+  L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png').addTo(map);
+  alert('before getData');
+  getData();
+}
+
+// Function for getting data
+function getData() {
+
+  // Execute an AJAX request to get the data in data/response.js
+  // When your request is successful, call your customBuild function
+  var data;
+  alert('declared data');
+  $.ajax({
+  	url:'https://data.seattle.gov/resource/7ais-f98f.json?year=2015&$limit=500',
+  	type:'get',
+  	success:function(d) {
+  		data = d;
+  		alert('got data');
+  		customBuild(data);	
+  		alert('reached here');
+  	},
+  	dataType:'json'
+  });
+}
+
+// Do something creative with the data here!  
+function customBuild(data) {
+	alert('reached customBuild');
+	data.map(function(dp) {
+		alert('add circle');
+		var circle = L.circle([dp.latitude, dp.longitude], 200, {color:'red', opacity: 1}).addTo(map);
+
+	});
+	alert('added ticker');
+}
