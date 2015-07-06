@@ -6,7 +6,7 @@ var drawMap = function() {
   // Execute your function to get data
   var theMap = L.map('container').setView([38.5, -98.0], 4);
   L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png').addTo(theMap);
-  $('#container').fadeIn(6000).removeClass('hidden');
+  $('#container').fadeIn(5000).removeClass('hidden');
   getData(theMap);
 }
 
