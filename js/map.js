@@ -6,7 +6,7 @@ var drawMap = function() {
   // Execute your function to get data
 
   var map = L.map('container');
-  map.setView([47.61, -122.33], 12);
+  map.setView([47.61, -122.33], 7);
 
   L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png').addTo(map);
   alert('before getData');
@@ -38,7 +38,7 @@ var customBuild = function(data) {
 	alert('reached customBuild');
 	data.map(function(d) {
 		alert('add circle');
-		var circle = L.circle([lat, lng], 200, {color: 'red', opacity: 0.5});
+		var circle = L.circle([d.lat, d.lng], 200, {color: 'red', opacity: 0.5});
     circle.addTo(map);
 		alert('add circle 2');
 
